@@ -318,15 +318,27 @@ void Graphics::PutPixel( int x,int y,Color c )
 
 void Graphics::DrawRectangle_by_Dim(int x, int y, int width, int height, Color c)
 {
-	for (int i = 0; i < height; i++)
+	int i = 0,j = 0;
+	for ( i = 0; i < height; i++)
 	{
-		for (int j = 0; j < width; j++)
+		for ( j = 0; j < width; j++)
 		{
 			PutPixel(x + j, y + i, c);
 		}
 	}
 }
 
+void Graphics::DrawRectangle_start_end(int x1, int y1, int x2, int y2, Color c) {
+	//left to right and up to down
+	int i = 0, j = 0;
+	for (i = x1; i < x2; i++)
+	{
+		for (j = y1; j < y2; j++)
+		{
+			PutPixel(i, j, c);
+		}
+	}
+}
 
 //////////////////////////////////////////////////
 //           Graphics Exception

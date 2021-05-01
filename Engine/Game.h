@@ -34,7 +34,6 @@ public:
 	Game( class MainWindow& wnd );
 	Game( const Game& ) = delete;
 	Game& operator=( const Game& ) = delete;
-	void draw_gameover(Graphics &gfx, int x, int y);
 	void Go();
 private:
 	void ComposeFrame();
@@ -59,5 +58,6 @@ private:
 	board brd;
 	snake Snake;
 	Location delta = {1,0};
+	bool ischanged_dir = false;
 	/********************************/
 };

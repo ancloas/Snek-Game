@@ -24,18 +24,18 @@ Location snake::segment::get_pos() const
 	return pos;
 }
 
-void snake::segment::init_body()
+void snake::segment::init_body(Color C)
 {
-	c = snake::body_color;
+	c = C;
 	pos = { -1,-1 };
 }
 
 void snake::segment::draw(board &b)
 {
 	assert(pos.x < board::width);
-	assert(pos.x >= 0);
+	assert(pos.x >= board::loc.x);
 	assert(pos.y < board::height);
-	assert(pos.y >= 0);
+	assert(pos.y >= board::loc.y);
 	b.draw_cell(pos, c);
 }
 
@@ -43,13 +43,13 @@ void snake::segment::touching_boundary()
 {
 	
 	if(pos.x>=board::width)
-		pos.x = 0;
+		pos.x = board::loc.x;
 	
-	if(pos.x <0)
+	if(pos.x <board::loc.x)
 	pos.x = board::width - 1;
 	if(pos.y >=board::height)
-	pos.y = 0;
-	if (pos.y < 0)
+	pos.y = board::loc.y;
+	if (pos.y < board::loc.y)
 		pos.y = board::height - 1;
 
 }
@@ -72,7 +72,7 @@ snake::snake()
 void snake::Grow()
 {
 	segment s;
-	s.init_body();
+	s.init_body(body_color[size%2]);
 	Segments.push_back(s);
 	size++;
 	grown = true;

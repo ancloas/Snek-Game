@@ -57,6 +57,7 @@ public:
 	}
 	void PutPixel( int x,int y,Color c );
 	void DrawRectangle_by_Dim(int x, int y, int width, int height, Color c);
+	void DrawRectangle_start_end(int x1, int y1, int x2, int y2, Color c);
 	~Graphics();
 private:
 	Microsoft::WRL::ComPtr<IDXGISwapChain>				pSwapChain;

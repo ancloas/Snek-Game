@@ -20,7 +20,7 @@ private:
 		void move_by(Location  const &Delta) ;
 		void init_head();
 		Location get_pos() const;
-		void init_body();
+		void init_body(Color c);
 		void draw(board &b);
 		void touching_boundary();
 	private:
@@ -30,7 +30,7 @@ private:
 private:
 	std::vector<segment> Segments;
 	static constexpr Color head_color=Colors::Red;
-	static constexpr Color body_color= Colors::Green;
+	static constexpr Color body_color[2] = { Colors::Green, Colors::Yellow};
 	bool grid[board::width][board::height];
 	bool grown=false;
 	int size;
