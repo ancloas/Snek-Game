@@ -27,6 +27,7 @@
 #include "Location.h"
 #include <random>
 #include "Snake.h"
+#include "RunTimer.h"
 
 class Game
 {
@@ -52,12 +53,11 @@ private:
 	std::mt19937 rng;
 	std::uniform_int_distribution<int> target_dist_x;
 	std::uniform_int_distribution<int> target_dist_y;
-	int snake_frame = 20;
-	int  snake_rate = 0;
 	Location Target;
 	board brd;
 	snake Snake;
 	Location delta = {1,0};
 	bool ischanged_dir = false;
+	RunTimer Timer;
 	/********************************/
 };

@@ -149,6 +149,7 @@
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="Notification.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="RunTimer.h" />
     <ClInclude Include="Snake.h" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +162,7 @@
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Notification.cpp" />
+    <ClCompile Include="RunTimer.cpp" />
     <ClCompile Include="Snake.cpp" />
   </ItemGroup>
   <ItemGroup>
