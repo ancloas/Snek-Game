@@ -40,7 +40,7 @@ private:
 	int size;
 	Location delta;
     bool GameOver=false;
-	float move_time = 0.2f;   //snake moves every ($move_time )secs by 1 cell
+	float move_time = 1.0/10.0f;   //snake moves every ($move_time )secs by 1 cell
 	float time_period = 0.0f;       //time period, time count from start
 	float move_time_reduced = 0.002f;   //snake move time would reduce by speed_up amount
 	bool grow=false;
