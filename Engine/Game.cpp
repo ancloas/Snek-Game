@@ -52,37 +52,13 @@ void Game::UpdateModel()
 	float time_elapsed = Timer.Time_Elapsed();
 	if (!Snake.IsGameOver())
 	{		
-		if (wnd.kbd.KeyIsPressed(VK_RIGHT) && (delta.x!= -1) && !ischanged_dir)
-		{
-			delta = { 1,0 };
-			ischanged_dir = true;
-		}
-		if (wnd.kbd.KeyIsPressed(VK_DOWN) && (delta.y!= -1) && !ischanged_dir)
-		{
-			delta = { 0,1 };
-			ischanged_dir = true;
-		}
-		if (wnd.kbd.KeyIsPressed(VK_LEFT)  && (delta.x != 1) && !ischanged_dir)
-		{
-			delta = { -1,0 };
-			ischanged_dir = true;
-		}
-		if (wnd.kbd.KeyIsPressed(VK_UP) && (delta.y != 1)  &&!ischanged_dir)
-		{
-			delta = { 0,-1 };
-			ischanged_dir = true;
-		}		
-	    if (ischanged_dir)
-	    {
-	    	Snake.Get_delta(delta);
-	    	ischanged_dir = false;
-	    }
+		
 	    if (Snake.Eat_Target(Target))
 	    {
 	    	Target.x = target_dist_x(rng);
 	    	Target.y = target_dist_y(rng);
 	    }
-		Snake.Displacement(time_elapsed);
+		Snake.Displacement(time_elapsed, wnd.kbd);
 	}
 }
 

@@ -53,6 +53,11 @@ void snake::segment::touching_boundary()
 		pos.y = board::height - 1;
 
 }
+void snake::segment::change_color(Color Col)
+{
+	this->c = Col;
+}
+
 
 snake::snake()
 {
@@ -130,11 +135,40 @@ void snake::Speed_Up()
 {
 	move_time -= move_time_reduced;
 }
-void snake::Displacement(float dt)
+void snake::Displacement(float dt,Keyboard &kbd)
 { 
 	time_period += dt;
 	//growing the snake
-	
+
+	if (kbd.KeyIsPressed(VK_RIGHT) && (delta.x != -1) &&(!isChanged_dir))
+	{
+		delta = { 1,0 }; 
+		isChanged_dir = true;
+	}
+	if (kbd.KeyIsPressed(VK_DOWN) && (delta.y != -1) && (!isChanged_dir))
+	{
+		delta = { 0,1 };
+		isChanged_dir = true;
+	}
+	if (kbd.KeyIsPressed(VK_LEFT) && (delta.x != 1) && (!isChanged_dir))
+	{
+		delta = { -1,0 };
+		isChanged_dir = true;
+	}
+	if (kbd.KeyIsPressed(VK_UP) && (delta.y != 1) && (!isChanged_dir))
+	{
+		delta = { 0,-1 };
+		isChanged_dir = true;
+	}
+	if (kbd.KeyIsPressed(VK_CONTROL))
+	{
+		Segments[0].change_color(Colors::Magenta);
+	}
+	if (kbd.KeyIsPressed(VK_SPACE))
+	{
+		Segments[0].change_color(Colors::Green);
+	}
+
 	if (time_period >= move_time)
 	{
 		//move
@@ -145,5 +179,6 @@ void snake::Displacement(float dt)
 		}
 		Move_By();
 		time_period = time_period-move_time;
+		isChanged_dir = false;//once the snake moves we can let the user change direction
 	}
 }

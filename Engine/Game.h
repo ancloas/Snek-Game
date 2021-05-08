@@ -56,8 +56,6 @@ private:
 	Location Target;
 	board brd;
 	snake Snake;
-	Location delta = {1,0};
-	bool ischanged_dir = false;
 	RunTimer Timer;
 	/********************************/
 };

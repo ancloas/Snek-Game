@@ -3,6 +3,7 @@
 #include "Colors.h"
 #include "Board.h"
 #include <vector>
+#include "Keyboard.h"
 class snake
 {
 public:
@@ -14,7 +15,7 @@ public:
 	bool IsGameOver();
 	bool Eat_Target(const Location Target);
 	void Speed_Up();
-	void Displacement(float dt);
+	void Displacement(float dt, Keyboard &kbd);
 private:
 	class segment
 	{public:
@@ -25,6 +26,7 @@ private:
 		void init_body(Color c);
 		void draw(board &b);
 		void touching_boundary();
+		void change_color(Color c);
 	private:
 		Location pos;
 		Color c;
@@ -38,9 +40,10 @@ private:
 	int size;
 	Location delta;
     bool GameOver=false;
-	float velocity=1.0f/10.0f;
-	float move_time = 0.5f;   //snake moves every 0.5 sec by 1 cell
+	float move_time = 0.2f;   //snake moves every ($move_time )secs by 1 cell
 	float time_period = 0.0f;       //time period, time count from start
-	float move_time_reduced = 0.02f;   //snake move time would reduce by speed_up amount
+	float move_time_reduced = 0.002f;   //snake move time would reduce by speed_up amount
 	bool grow=false;
+	Keyboard kbd;
+	bool isChanged_dir = false;
 };
